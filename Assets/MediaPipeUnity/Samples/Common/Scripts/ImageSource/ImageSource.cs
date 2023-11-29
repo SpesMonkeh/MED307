@@ -8,6 +8,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
+using static P307.Shared.Const307;
 
 namespace Mediapipe.Unity
 {
@@ -18,32 +19,37 @@ namespace Mediapipe.Unity
     {
       public int width;
       public int height;
-      public double frameRate;
+      public int refreshRate;
+      public RefreshRate frameRate;
 
       public ResolutionStruct(int width, int height, double frameRate)
       {
         this.width = width;
         this.height = height;
-        this.frameRate = frameRate;
+        this.refreshRate = (int)frameRate;
+        this.frameRate = new RefreshRate();
+        this.frameRate.numerator = (uint)this.refreshRate;
+        this.frameRate.denominator = ONE;
       }
 
       public ResolutionStruct(Resolution resolution)
       {
-        width = resolution.width;
-        height = resolution.height;
-        frameRate = resolution.refreshRate;
+        this.width = resolution.width;
+        this.height = resolution.height;
+        this.frameRate = resolution.refreshRateRatio;
+        this.refreshRate = (int)this.frameRate.value;
       }
 
-      public Resolution ToResolution()
-      {
-        return new Resolution() { width = width, height = height, refreshRate = (int)frameRate };
-      }
+      public Resolution ToResolution() => new()
+      { 
+        width = this.width, height = this.height, refreshRateRatio = this.frameRate
+      };
 
       public override string ToString()
       {
-        var aspectRatio = $"{width}x{height}";
-        var frameRateStr = frameRate.ToString("#.##");
-        return frameRate > 0 ? $"{aspectRatio} ({frameRateStr}Hz)" : aspectRatio;
+        var aspectRatio = $"{this.width}x{this.height}";
+        var frameRateStr = this.frameRate.value.ToString("#.##");
+        return this.frameRate.value > ZERO ? $"{aspectRatio} ({frameRateStr}Hz)" : aspectRatio;
       }
     }
 
@@ -61,7 +67,7 @@ namespace Mediapipe.Unity
     /// <remarks>
     ///   If <see cref="type" /> does not support frame rate, it returns zero.
     /// </remarks>
-    public virtual double frameRate => resolution.frameRate;
+    public virtual double FrameRate => resolution.frameRate.value;
     public float focalLengthPx { get; } = 2.0f; // TODO: calculate at runtime
     public virtual bool isHorizontallyFlipped { get; set; } = false;
     public virtual bool isVerticallyFlipped { get; } = false;

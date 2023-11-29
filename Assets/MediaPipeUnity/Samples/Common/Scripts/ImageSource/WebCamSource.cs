@@ -245,12 +245,12 @@ namespace Mediapipe.Unity
       return resolutions == null || resolutions.Length == 0 ? new ResolutionStruct() : resolutions.OrderBy(resolution => resolution, new ResolutionStructComparer(_preferableDefaultWidth)).First();
     }
 
-    private void InitializeWebCamTexture()
+    void InitializeWebCamTexture()
     {
       Stop();
-      if (webCamDevice is WebCamDevice valueOfWebCamDevice)
+      if (webCamDevice is { } valueOfWebCamDevice)
       {
-        webCamTexture = new WebCamTexture(valueOfWebCamDevice.name, resolution.width, resolution.height, (int)resolution.frameRate);
+        webCamTexture = new WebCamTexture(valueOfWebCamDevice.name, resolution.width, resolution.height, (int)resolution.frameRate.value);
         return;
       }
       throw new InvalidOperationException("Cannot initialize WebCamTexture because WebCamDevice is not selected");
@@ -271,17 +271,17 @@ namespace Mediapipe.Unity
 
     private class ResolutionStructComparer : IComparer<ResolutionStruct>
     {
-      private readonly int _preferableDefaultWidth;
+      private readonly int preferableDefaultWidth;
 
       public ResolutionStructComparer(int preferableDefaultWidth)
       {
-        _preferableDefaultWidth = preferableDefaultWidth;
+        this.preferableDefaultWidth = preferableDefaultWidth;
       }
 
       public int Compare(ResolutionStruct a, ResolutionStruct b)
       {
-        var aDiff = Mathf.Abs(a.width - _preferableDefaultWidth);
-        var bDiff = Mathf.Abs(b.width - _preferableDefaultWidth);
+        int aDiff = Mathf.Abs(a.width - this.preferableDefaultWidth);
+        int bDiff = Mathf.Abs(b.width - this.preferableDefaultWidth);
         if (aDiff != bDiff)
         {
           return aDiff - bDiff;
@@ -292,7 +292,7 @@ namespace Mediapipe.Unity
           return a.height - b.height;
         }
         // prefer smaller frame rate
-        return (int)(a.frameRate - b.frameRate);
+        return (int)(a.frameRate.value - b.frameRate.value);
       }
     }
   }

@@ -41,7 +41,7 @@ namespace Mediapipe.Unity
       }
     }
 
-    public override double frameRate => 0;
+    public override double FrameRate => 0;
 
     public override string sourceName => image != null ? image.name : null;
 
