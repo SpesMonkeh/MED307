@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
@@ -22,6 +24,7 @@ public class PlayerBehavior : MonoBehaviour
 
     //Rigidbody
     private Rigidbody _rb;
+    
     
     
     void Start()
@@ -58,4 +61,8 @@ public class PlayerBehavior : MonoBehaviour
         _rb.MovePosition(transform.position+transform.forward*_vInput*Time.fixedDeltaTime);
         _rb.MoveRotation(_rb.rotation*angleRot);
     }
+    
+   
+    
+    
 }
