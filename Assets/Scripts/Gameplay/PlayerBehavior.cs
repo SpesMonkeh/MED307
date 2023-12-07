@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Gameplay;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
@@ -54,6 +53,11 @@ public class PlayerBehavior : MonoBehaviour
         _rb.MoveRotation(_rb.rotation * Quaternion.Euler(Vector3.up * mouseX));
     }
 
+    /*
+     * Physics bør køre i FixedUpdate(). FixedUpdate kaldes med et specifikt interval, hver gang.
+     * LateUpdate kører først, når både Update og FixedUpdate er færdige, og det kan variere.
+     * Så physics kan potentielt blive fucked, hvis det opdateres på et utilregneligt tidspunkt. 
+     */
     private void LateUpdate()
     {
         Vector3 rotation = Vector3.up * _hInput;

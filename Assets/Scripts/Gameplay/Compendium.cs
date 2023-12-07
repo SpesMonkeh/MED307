@@ -14,6 +14,18 @@ public class Compendium : MonoBehaviour
     
     public static Action _playerPickUp = delegate {  };
 
+    /*
+     * - Lav en metode: AddEntry(CompendiumEntry entry)
+     * - I AddEntry:
+     * - - Tjek, om entry er C.Action action eller C.Sign sign
+     * - - Tjek, om action eller sign er opbevaret i tilhørende Dictionary
+     * - - Hvis ikke: Tilføj entry som Key og bool == false som Value => dictionary.TryAdd(key: entry, value: false)
+     * - - Hvis ja og dictionary[entry] == true:
+     * - -      new GameObject(entry.EntryName, typeof(CompendiumEntryDisplay));
+     * - -      osv.
+     * 
+     */
+    
     
     private void Awake()
     {
