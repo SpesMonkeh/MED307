@@ -54,7 +54,8 @@ public class PlayerBehavior : MonoBehaviour
         _rb.MoveRotation(_rb.rotation * Quaternion.Euler(Vector3.up * mouseX));
     }
 
-    private void LateUpdate()
+    
+    private void FixedUpdate()
     {
         Vector3 rotation = Vector3.up * _hInput;
         Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);

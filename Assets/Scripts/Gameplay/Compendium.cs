@@ -12,7 +12,20 @@ public class Compendium : MonoBehaviour
     private Dictionary<CompendiumAction, bool> _actionDict = new();
     private Dictionary<CompendiumSign, bool> _signDict = new();
     
-    public static Action _playerPickUp = delegate {  };
+    public static Action<CompendiumEntry> _thePlayerPickup = delegate {  };
+    
+
+    /*
+        * - Lav en metode: AddEntry(CompendiumEntry entry)
+        * - I AddEntry:
+        * - - Tjek, om entry er C.Action action eller C.Sign sign
+        * - - Tjek, om action eller sign er opbevaret i tilhørende Dictionary
+        * - - Hvis ikke: Tilføj entry som Key og bool == false som Value => dictionary.TryAdd(key: entry, value: false)
+        * - - Hvis ja og dictionary[entry] == true:
+        * - -      new GameObject(entry.EntryName, typeof(CompendiumEntryDisplay));
+        * - -      osv.
+        * 
+        */
 
     
     private void Awake()
@@ -39,17 +52,51 @@ public class Compendium : MonoBehaviour
         }
     }
 
+    private void AddEntry(CompendiumEntry entry)
+    {
+        Debug.Log("AddEntryWorks");
+        if (entry is CompendiumAction action)
+        {
+            if (!_actionDict.ContainsKey(action))
+            {
+                _actionDict.TryAdd(action, false);
+                
+            }
+            else if (_actionDict.ContainsKey(action) && _actionDict[action] == true)
+            {
+                var newEntryDisplay = new GameObject(entry.EntryName, typeof(CompendiumEntryDisplay));
+
+
+
+            }
+            
+            
+        }
+        else if (entry is CompendiumSign sign)
+        {
+            if (!_signDict.ContainsKey(sign))
+            {
+                _signDict.TryAdd(sign, false);
+            }
+            else if (_signDict.ContainsKey(sign) && _signDict[sign] == true)
+            {
+                
+                var newEntryDisplay = new GameObject(entry.EntryName, typeof(CompendiumEntryDisplay));
+                
+                
+            }
+            
+        }
+    }
 
     private void OnEnable()
     {
-        _playerPickUp += CheckCompendium;
-        _playerPickUp += UpdateCompendium;
+        _thePlayerPickup += AddEntry;
     }
 
     private void OnDisable()
     {
-        _playerPickUp -= CheckCompendium;
-        _playerPickUp -= UpdateCompendium;
+        _thePlayerPickup -= AddEntry;
     }
 
     // Start is called before the first frame update
@@ -59,47 +106,6 @@ public class Compendium : MonoBehaviour
     }
 
 
-
-    private void CheckCompendium()
-    {
-        if (GameObject.FindGameObjectWithTag("Compendium").activeInHierarchy)
-        {
-            foreach (var entry in entryNames)
-            {
-                
-                if (entry is CompendiumAction action)
-                {
-                    if (_actionDict[action] == true)
-                    {
-                        return;
-                    }
-                    _actionDict[action] = false;
-                    
-                }
-                
-                if (entry is CompendiumSign sign)
-                {
-                    if (_signDict[sign] == true)
-                    {
-                        return;
-                    }
-                    _signDict[sign] = false; 
-                    
-                }
-            }
-        }
-        
-    }
-    
-    private void UpdateCompendium()
-    {
-        var entryNumber = _signDict;
-        if (GameObject.FindGameObjectWithTag("A").activeInHierarchy)
-        {
-            
-        }
-        
-    }
     
     // Update is called once per frame
     void Update()
