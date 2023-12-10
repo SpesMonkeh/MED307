@@ -1,22 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
 {
-    private Transform _playerTransform;
-    
-    private void Start()
-    {
-        _playerTransform= GameObject.Find("Player").transform;
-    }
+    [SerializeField] PlayerBehavior player;
 
-   
-
-    // Update is called once per frame
-    void LateUpdate()
+    void Start()
     {
-        transform.position = _playerTransform.position;
-        transform.rotation = _playerTransform.rotation;
+	    this.player ??= FindObjectsByType<PlayerBehavior>(FindObjectsInactive.Include, FindObjectsSortMode.None)[0];
     }
 }
