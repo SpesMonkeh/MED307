@@ -46,8 +46,8 @@ public class ItemBehavior : MonoBehaviour
     private void CollectCard(CompendiumEntry entry)
     {
 
-        WordPanel newEntry = Instantiate(_wordPanelPrefab,GameObject.Find("Canvas").transform);
         SetCompendiumEntry(entry);
+        WordPanel newEntry = Instantiate(_wordPanelPrefab,GameObject.Find("Canvas").transform);
 
     }
 
@@ -59,7 +59,7 @@ public class ItemBehavior : MonoBehaviour
 
     }
     
-    public void TurnOnThePanel()
+    private void TurnOnThePanel()
     {
         _ThePanel.SetActive(true);
         Debug.Log("Finds the panel");

@@ -24,6 +24,7 @@ public class PlayerBehavior : MonoBehaviour
 
     //Rigidbody
     private Rigidbody _rb;
+
     
     
     
@@ -37,18 +38,15 @@ public class PlayerBehavior : MonoBehaviour
     void Update()
     {
         //Setting the input value to the values from Input Manager's vertical and horizontal values times the speed.
-        _vInput = Input.GetAxis("Vertical") * _moveSpeed;
-        _hInput = Input.GetAxis("Horizontal") * _rotateSpeed;
+        _vInput = Input.GetAxis("Vertical");
+        _hInput = Input.GetAxis("Horizontal");
 
+        _inputVector = new Vector2(_vInput, _hInput);
         //Setting the mouse input by using the floats to the x and y values times the sensitivity and time
         float mouseX = Input.GetAxis("Mouse X") * _sensX * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * _sensY * Time.deltaTime;
-
-        _yRotation += mouseX;
-        _xRotation -= mouseY;
-        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-        transform.Rotate(Vector3.up * mouseX);
         
+
         // Rotating the rigidbody based on the rotation from the vertical and horizontal angles times the mouse input
         _rb.MoveRotation(_rb.rotation * Quaternion.Euler(Vector3.left * mouseY));
         _rb.MoveRotation(_rb.rotation * Quaternion.Euler(Vector3.up * mouseX));
@@ -59,11 +57,27 @@ public class PlayerBehavior : MonoBehaviour
     {
         Vector3 rotation = Vector3.up * _hInput;
         Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
-        _rb.MovePosition(transform.position+transform.forward*_vInput*Time.fixedDeltaTime);
+        MoveCharacter();
         _rb.MoveRotation(_rb.rotation*angleRot);
     }
     
+    [SerializeField] private Vector2 _inputVector;
+
+
+    private Vector3 Up;
+    
+    void MoveCharacter()
+    {
+        var moveVector = new Vector3(_inputVector.y, 0, _inputVector.x);
+        //_rb.AddForce(moveVector*_moveSpeed);
+        Up = new Vector3(0, _rb.velocity.y, 0f);
+        var a = transform.InverseTransformDirection(transform.forward);
+        var b = transform.InverseTransformDirection(transform.right);
+        _rb.velocity = (a * _vInput + b * _hInput).normalized * _moveSpeed + Up;
+
+    }
    
+    
     
     
 }

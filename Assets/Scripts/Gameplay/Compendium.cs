@@ -60,13 +60,11 @@ public class Compendium : MonoBehaviour
             if (!_actionDict.ContainsKey(action))
             {
                 _actionDict.TryAdd(action, false);
-                
+
             }
             else if (_actionDict.ContainsKey(action) && _actionDict[action] == true)
             {
                 var newEntryDisplay = new GameObject(entry.EntryName, typeof(CompendiumEntryDisplay));
-
-
 
             }
             
@@ -82,8 +80,7 @@ public class Compendium : MonoBehaviour
             {
                 
                 var newEntryDisplay = new GameObject(entry.EntryName, typeof(CompendiumEntryDisplay));
-                
-                
+
             }
             
         }

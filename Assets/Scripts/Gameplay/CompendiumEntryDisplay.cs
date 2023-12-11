@@ -39,6 +39,7 @@ namespace Gameplay
 
         void OnPlayerPickup(CompendiumEntry entryPickup)
         {
+            if (_image.enabled) return;
             _image.enabled = entryPickup == _entry;
         }
     }
