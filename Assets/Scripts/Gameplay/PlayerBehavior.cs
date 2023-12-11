@@ -25,13 +25,15 @@ public class PlayerBehavior : MonoBehaviour
     //Rigidbody
     private Rigidbody _rb;
 
+    [SerializeField] private Camera _playerCam;
     
     
-    
+
     void Start()
     {
         //Gets the player's rigidbody component
         _rb = GetComponent<Rigidbody>();
+        _rb.freezeRotation = true;
     }
 
     
@@ -68,16 +70,21 @@ public class PlayerBehavior : MonoBehaviour
     
     void MoveCharacter()
     {
-        var moveVector = new Vector3(_inputVector.y, 0, _inputVector.x);
-        //_rb.AddForce(moveVector*_moveSpeed);
-        Up = new Vector3(0, _rb.velocity.y, 0f);
-        var a = transform.InverseTransformDirection(transform.forward);
-        var b = transform.InverseTransformDirection(transform.right);
-        _rb.velocity = (a * _vInput + b * _hInput).normalized * _moveSpeed + Up;
+            
+        var cameraForward = _playerCam.transform.forward;
+        var cameraRight = _playerCam.transform.right;
+
+        var moveDirection = (cameraForward * _inputVector.x + cameraRight * _inputVector.y).normalized;
+        
+        moveDirection.y = 0f;
+
+        // Apply movement to the rigidbody
+        _rb.velocity = new Vector3(moveDirection.x, _rb.velocity.y, moveDirection.z) * _moveSpeed;
+    }
 
     }
    
     
     
     
-}
+

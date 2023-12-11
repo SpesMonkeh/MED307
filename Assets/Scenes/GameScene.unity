@@ -1434,9 +1434,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 10
-  _rotateSpeed: 60
+  _rotateSpeed: 20
   _sensX: 100
   _sensY: 100
+  _playerCam: {fileID: 1379377693}
   _inputVector: {x: 0, y: 0}
 --- !u!54 &1022932685
 Rigidbody:
@@ -1547,7 +1548,7 @@ Transform:
   m_GameObject: {fileID: 1022932683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1, y: 1, z: 0}
+  m_LocalPosition: {x: -2.1, y: 1.11, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2119,7 +2120,7 @@ Transform:
   m_GameObject: {fileID: 1379377691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.07, y: 1.5, z: 0}
+  m_LocalPosition: {x: -2.07, y: 1.608, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
