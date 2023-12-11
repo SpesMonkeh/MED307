@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Gameplay;
+using P307.Runtime.Gameplay.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,7 +65,8 @@ public class ItemBehavior : MonoBehaviour
         _ThePanel.SetActive(true);
         Debug.Log("Finds the panel");
     }
-    private void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)
     {
         
         if (other.gameObject.TryGetComponent(out PlayerBehavior playerObj) is false)

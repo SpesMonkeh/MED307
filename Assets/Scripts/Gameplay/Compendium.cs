@@ -48,7 +48,6 @@ public class Compendium : MonoBehaviour
                 _signDict.TryAdd(sign, false);
                 Debug.Log($"SignDict {_signDict.Count}");
             }
-            
         }
     }
 
@@ -65,12 +64,7 @@ public class Compendium : MonoBehaviour
             else if (_actionDict.ContainsKey(action) && _actionDict[action] == true)
             {
                 var newEntryDisplay = new GameObject(entry.EntryName, typeof(CompendiumEntryDisplay));
-
-
-
             }
-            
-            
         }
         else if (entry is CompendiumSign sign)
         {
@@ -82,10 +76,7 @@ public class Compendium : MonoBehaviour
             {
                 
                 var newEntryDisplay = new GameObject(entry.EntryName, typeof(CompendiumEntryDisplay));
-                
-                
             }
-            
         }
     }
 
