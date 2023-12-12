@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Gameplay;
+using P307.Runtime.Inputs;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -26,8 +29,11 @@ public class PlayerBehavior : MonoBehaviour
     private Rigidbody _rb;
 
     [SerializeField] private Camera _playerCam;
+
+    private Vector3 _movement;
     
     
+   
 
     void Start()
     {
@@ -40,10 +46,10 @@ public class PlayerBehavior : MonoBehaviour
     void Update()
     {
         //Setting the input value to the values from Input Manager's vertical and horizontal values times the speed.
-        _vInput = Input.GetAxis("Vertical");
-        _hInput = Input.GetAxis("Horizontal");
+        //_vInput = Input.GetAxis("Vertical");
+        //_hInput = Input.GetAxis("Horizontal");
 
-        _inputVector = new Vector2(_vInput, _hInput);
+        _inputVector = new Vector2(_hInput, _vInput);
         //Setting the mouse input by using the floats to the x and y values times the sensitivity and time
         float mouseX = Input.GetAxis("Mouse X") * _sensX * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * _sensY * Time.deltaTime;
@@ -54,19 +60,48 @@ public class PlayerBehavior : MonoBehaviour
         _rb.MoveRotation(_rb.rotation * Quaternion.Euler(Vector3.up * mouseX));
     }
 
-    
+    private void OnEnable()
+    {
+        InputEvents.HasMovementInput += OnMovementInput;
+    }
+
+    private void OnMovementInput(Vector2 obj, GameMode mode)
+    {
+        Vector2 norm = obj.normalized;
+        _vInput = norm.x;
+        _hInput = norm.y;
+    }
+
+    private void OnDisable()
+    {
+        InputEvents.HasMovementInput -= OnMovementInput;
+    }
+
     private void FixedUpdate()
     {
         Vector3 rotation = Vector3.up * _hInput;
         Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
-        MoveCharacter();
+        //MoveCharacter();
         _rb.MoveRotation(_rb.rotation*angleRot);
+        
+        
+        
+        var cameraForward = _playerCam.transform.forward;
+        var cameraRight = _playerCam.transform.right;
+
+        var moveDirection = (cameraForward * _inputVector.x + cameraRight * _inputVector.y).normalized;
+        
+        moveDirection.y = 0f;
+
+        // Apply movement to the rigidbody
+        _rb.velocity = new Vector3(moveDirection.x, _rb.velocity.y, moveDirection.z) * _moveSpeed;
     }
     
     [SerializeField] private Vector2 _inputVector;
 
+    
 
-    private Vector3 Up;
+    
     
     void MoveCharacter()
     {

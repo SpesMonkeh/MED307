@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using P307.Runtime.Inputs;
 using TMPro;
 using UnityEngine;
 
@@ -30,6 +31,7 @@ public class DoorBehavior : MonoBehaviour
         if (_signLeft==0)
         {
             SceneChanger.ChangeScene("PuzzleScene");
+            GameManager.DoChangeGameMode?.Invoke(GameMode.Typing);
         }
         
     }
