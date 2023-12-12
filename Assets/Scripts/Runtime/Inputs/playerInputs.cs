@@ -102,9 +102,9 @@ namespace P307.Runtime.Inputs
             ""id"": ""7a816422-9808-45f6-9e24-f8369f97cb2d"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Writing"",
                     ""type"": ""Button"",
-                    ""id"": ""98ff37ee-f8ab-42d1-8d9c-ab25a77c8552"",
+                    ""id"": ""6e3931b2-eaa4-4658-826a-0558d48f6568"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -114,12 +114,12 @@ namespace P307.Runtime.Inputs
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""a51749f0-2289-4c0a-a641-4973222f0f32"",
-                    ""path"": """",
+                    ""id"": ""a00aec18-aa11-4e61-b4c4-d56836306ee6"",
+                    ""path"": ""<Keyboard>/anyKey"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Writing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -133,7 +133,7 @@ namespace P307.Runtime.Inputs
             m_InGame_Movement = m_InGame.FindAction("Movement", throwIfNotFound: true);
             // InPuzzle
             m_InPuzzle = asset.FindActionMap("InPuzzle", throwIfNotFound: true);
-            m_InPuzzle_Newaction = m_InPuzzle.FindAction("New action", throwIfNotFound: true);
+            m_InPuzzle_Writing = m_InPuzzle.FindAction("Writing", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -241,12 +241,12 @@ namespace P307.Runtime.Inputs
         // InPuzzle
         private readonly InputActionMap m_InPuzzle;
         private List<IInPuzzleActions> m_InPuzzleActionsCallbackInterfaces = new List<IInPuzzleActions>();
-        private readonly InputAction m_InPuzzle_Newaction;
+        private readonly InputAction m_InPuzzle_Writing;
         public struct InPuzzleActions
         {
             private @PlayerInputs m_Wrapper;
             public InPuzzleActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Newaction => m_Wrapper.m_InPuzzle_Newaction;
+            public InputAction @Writing => m_Wrapper.m_InPuzzle_Writing;
             public InputActionMap Get() { return m_Wrapper.m_InPuzzle; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -256,16 +256,16 @@ namespace P307.Runtime.Inputs
             {
                 if (instance == null || m_Wrapper.m_InPuzzleActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_InPuzzleActionsCallbackInterfaces.Add(instance);
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Writing.started += instance.OnWriting;
+                @Writing.performed += instance.OnWriting;
+                @Writing.canceled += instance.OnWriting;
             }
 
             private void UnregisterCallbacks(IInPuzzleActions instance)
             {
-                @Newaction.started -= instance.OnNewaction;
-                @Newaction.performed -= instance.OnNewaction;
-                @Newaction.canceled -= instance.OnNewaction;
+                @Writing.started -= instance.OnWriting;
+                @Writing.performed -= instance.OnWriting;
+                @Writing.canceled -= instance.OnWriting;
             }
 
             public void RemoveCallbacks(IInPuzzleActions instance)
@@ -289,7 +289,7 @@ namespace P307.Runtime.Inputs
         }
         public interface IInPuzzleActions
         {
-            void OnNewaction(InputAction.CallbackContext context);
+            void OnWriting(InputAction.CallbackContext context);
         }
     }
 }

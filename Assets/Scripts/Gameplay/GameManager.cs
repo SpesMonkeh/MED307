@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Panel").SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             Inventory._showCompendium?.Invoke();
             

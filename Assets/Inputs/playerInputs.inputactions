@@ -78,9 +78,9 @@
             "id": "7a816422-9808-45f6-9e24-f8369f97cb2d",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Writing",
                     "type": "Button",
-                    "id": "98ff37ee-f8ab-42d1-8d9c-ab25a77c8552",
+                    "id": "6e3931b2-eaa4-4658-826a-0558d48f6568",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -90,12 +90,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "a51749f0-2289-4c0a-a641-4973222f0f32",
-                    "path": "",
+                    "id": "a00aec18-aa11-4e61-b4c4-d56836306ee6",
+                    "path": "<Keyboard>/anyKey",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Writing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -37,6 +37,9 @@ public class PlayerBehavior : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         //Gets the player's rigidbody component
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
@@ -81,7 +84,6 @@ public class PlayerBehavior : MonoBehaviour
     {
         Vector3 rotation = Vector3.up * _hInput;
         Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
-        //MoveCharacter();
         _rb.MoveRotation(_rb.rotation*angleRot);
         
         
@@ -100,23 +102,6 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private Vector2 _inputVector;
 
     
-
-    
-    
-    void MoveCharacter()
-    {
-            
-        var cameraForward = _playerCam.transform.forward;
-        var cameraRight = _playerCam.transform.right;
-
-        var moveDirection = (cameraForward * _inputVector.x + cameraRight * _inputVector.y).normalized;
-        
-        moveDirection.y = 0f;
-
-        // Apply movement to the rigidbody
-        _rb.velocity = new Vector3(moveDirection.x, _rb.velocity.y, moveDirection.z) * _moveSpeed;
-    }
-
     }
    
     
