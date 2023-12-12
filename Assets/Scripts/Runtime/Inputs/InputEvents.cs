@@ -29,6 +29,14 @@ namespace P307.Runtime.Inputs
         {
             HasMovementInput?.Invoke(context.ReadValue<Vector2>(), CurrentGameMode);
         }
+
+        public void OnWriting(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                
+            }
+        }
     }
     public enum GameMode
     {

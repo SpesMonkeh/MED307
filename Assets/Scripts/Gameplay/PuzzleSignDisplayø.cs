@@ -10,36 +10,47 @@ namespace Gameplay
         [SerializeField] private CompendiumEntry _compendiumEntry;
         [SerializeField] private string _currentPuzzleString;
         [SerializeField] private TextMeshPro _tmPro;
+        [SerializeField] private TextMeshProUGUI _winText;
+        
         
 #if UNITY_EDITOR
         private void OnValidate()
         {
             _tmPro ??= GetComponent<TextMeshPro>();
-            string new_string = string.Empty;
+            string _newString = string.Empty;
             
             if (_compendiumEntry!=null)
             {
                 _currentPuzzleString = _compendiumEntry.EntryName;
                 for (int i = 0; i < _currentPuzzleString.Length; i++)
                 {
-                    char current = _currentPuzzleString[i];
+                    var current = _currentPuzzleString[i];
                     
                     if (Alphabet.Letters.Contains(_currentPuzzleString[i]))
                     {
-                        new_string += '_';
+                        _newString += '_';
                     }
                     else
                     {
-                        new_string += ' ';
+                        _newString += ' ';
                     }
                 }
 
-                _currentPuzzleString = new_string;
+                _currentPuzzleString = _newString;
                 _tmPro.text = _currentPuzzleString;
 
             }
         }
 #endif
+
+        private void YouWin()
+        {
+            if (_currentPuzzleString == _compendiumEntry.EntryName)
+            {
+                _winText.gameObject.SetActive(true);
+            }
+        }
+        
         
         
     }

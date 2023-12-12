@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Gameplay;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -10,9 +11,11 @@ using UnityEngine.UI;
 
 public class PuzzleBehavior : MonoBehaviour
 {
-    [SerializeField] private Text _codeText;
+    [SerializeField] private TextMeshPro _tmPro;
+    [SerializeField] private string _currentPuzzleString;
     [SerializeField] private string _rightText;
-    [SerializeField] private PuzzleEntry _puzzleEntry;
+    [SerializeField] private CompendiumEntry _compendiumEntry;
+    private int currentIndex;
     
 
 
@@ -30,20 +33,9 @@ public class PuzzleBehavior : MonoBehaviour
         }
     }
     
-
-    private void IfCodeIsCorrect()
-    {
-        if (_codeText.ToString()==_puzzleEntry.RightAnswer)
-        {
-            Debug.Log("Correct!");
-        }
-    }
-
-    private void Update()
-    {
-        
-    }
-
+   
+    
+    
     private void OnEnable()
     {
         Keyboard.current.onTextInput += GetKeyInput;
@@ -61,8 +53,38 @@ public class PuzzleBehavior : MonoBehaviour
         
         if (Alphabet.Letters.Contains(obj))
         {
-            Debug.Log(obj);
+            UpdateText(obj);
+
+            //Debug.Log(obj);
         }
         
     }
+    
+    
+    
+    private void UpdateText(char obj)
+    {
+        if (currentIndex < _compendiumEntry.EntryName.Length)
+        {
+            if (_compendiumEntry.EntryName[currentIndex] == ' ')
+            {
+                currentIndex++;
+            }
+
+            if (_compendiumEntry.EntryName[currentIndex] != obj)return;
+            
+            
+            if (_compendiumEntry.EntryName[currentIndex] == obj)
+            {
+                var charArray = _tmPro.text.ToCharArray();
+                charArray[currentIndex] = obj;
+                _tmPro.text = new string(charArray);
+            }
+            
+            
+            
+            currentIndex++;
+        }
+    }
 }
+
