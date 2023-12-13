@@ -16,7 +16,15 @@ public class PuzzleBehavior : MonoBehaviour
     [SerializeField] private string _rightText;
     [SerializeField] private CompendiumEntry _compendiumEntry;
     private int currentIndex;
-    
+   
+   
+
+
+    private void Awake()
+    {
+        
+        
+    }
 
 
     private void OnWriting()
@@ -85,5 +93,7 @@ public class PuzzleBehavior : MonoBehaviour
             currentIndex++;
         }
     }
+
+    
 }
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace Gameplay
 {
@@ -11,6 +12,8 @@ namespace Gameplay
         [SerializeField] private string _currentPuzzleString;
         [SerializeField] private TextMeshPro _tmPro;
         [SerializeField] private TextMeshProUGUI _winText;
+        [SerializeField] private RawImage _videoOutput;
+        
         public static Action _playerWritesCorrectly;
 
 
@@ -45,6 +48,11 @@ namespace Gameplay
         }
 #endif
 
+        private void Awake()
+        {
+            _videoOutput.gameObject.SetActive(false);
+        }
+
         private void OnEnable()
         {
             _playerWritesCorrectly += YouWin;
@@ -61,6 +69,7 @@ namespace Gameplay
             {
                 
                 _winText.gameObject.SetActive(true);
+                _videoOutput.gameObject.SetActive(true);
             }
             
            
