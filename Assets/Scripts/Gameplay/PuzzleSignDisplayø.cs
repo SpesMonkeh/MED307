@@ -11,8 +11,10 @@ namespace Gameplay
         [SerializeField] private string _currentPuzzleString;
         [SerializeField] private TextMeshPro _tmPro;
         [SerializeField] private TextMeshProUGUI _winText;
-        
-        
+        public static Action _playerWritesCorrectly;
+
+
+
 #if UNITY_EDITOR
         private void OnValidate()
         {
@@ -43,13 +45,32 @@ namespace Gameplay
         }
 #endif
 
+        private void OnEnable()
+        {
+            _playerWritesCorrectly += YouWin;
+        }
+
+        private void OnDisable()
+        {
+            _playerWritesCorrectly -= YouWin;
+        }
+
         private void YouWin()
         {
-            if (_currentPuzzleString == _compendiumEntry.EntryName)
+            if (_tmPro.text == _compendiumEntry.EntryName)
             {
+                
                 _winText.gameObject.SetActive(true);
             }
+            
+           
         }
+
+        private void Update()
+        {
+            _playerWritesCorrectly?.Invoke();
+        }
+        
         
         
         

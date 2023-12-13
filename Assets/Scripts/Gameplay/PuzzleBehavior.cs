@@ -54,8 +54,7 @@ public class PuzzleBehavior : MonoBehaviour
         if (Alphabet.Letters.Contains(obj))
         {
             UpdateText(obj);
-
-            //Debug.Log(obj);
+            
         }
         
     }
@@ -66,7 +65,7 @@ public class PuzzleBehavior : MonoBehaviour
     {
         if (currentIndex < _compendiumEntry.EntryName.Length)
         {
-            if (_compendiumEntry.EntryName[currentIndex] == ' ')
+            if (char.IsWhiteSpace(_compendiumEntry.EntryName[currentIndex]))
             {
                 currentIndex++;
             }

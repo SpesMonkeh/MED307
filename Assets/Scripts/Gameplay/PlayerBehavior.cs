@@ -48,19 +48,22 @@ public class PlayerBehavior : MonoBehaviour
     
     void Update()
     {
-        //Setting the input value to the values from Input Manager's vertical and horizontal values times the speed.
-        //_vInput = Input.GetAxis("Vertical");
-        //_hInput = Input.GetAxis("Horizontal");
-
+        
         _inputVector = new Vector2(_hInput, _vInput);
         //Setting the mouse input by using the floats to the x and y values times the sensitivity and time
         float mouseX = Input.GetAxis("Mouse X") * _sensX * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * _sensY * Time.deltaTime;
+        //float mouseY = Input.GetAxis("Mouse Y") * _sensY * Time.deltaTime;
+        float mouseY = 0f;
+        
         
 
-        // Rotating the rigidbody based on the rotation from the vertical and horizontal angles times the mouse input
-        _rb.MoveRotation(_rb.rotation * Quaternion.Euler(Vector3.left * mouseY));
-        _rb.MoveRotation(_rb.rotation * Quaternion.Euler(Vector3.up * mouseX));
+        Quaternion horizontalRotation = Quaternion.Euler(Vector3.up * mouseX);
+        Quaternion verticalRotation = Quaternion.Euler(Vector3.left * mouseY);
+        
+        Quaternion newRotation = _rb.rotation * horizontalRotation * verticalRotation;
+        
+        _rb.MoveRotation(newRotation);
+        
     }
 
     private void OnEnable()
@@ -87,7 +90,7 @@ public class PlayerBehavior : MonoBehaviour
         _rb.MoveRotation(_rb.rotation*angleRot);
         
         
-        
+        //var cameraForward = Vector3.Scale(_playerCam.transform.forward, new Vector3(1, 0, 1)).normalized;
         var cameraForward = _playerCam.transform.forward;
         var cameraRight = _playerCam.transform.right;
 
@@ -96,7 +99,7 @@ public class PlayerBehavior : MonoBehaviour
         moveDirection.y = 0f;
 
         // Apply movement to the rigidbody
-        _rb.velocity = new Vector3(moveDirection.x, _rb.velocity.y, moveDirection.z) * _moveSpeed;
+        _rb.velocity = new Vector3(moveDirection.x, moveDirection.y, moveDirection.z) * _moveSpeed;
     }
     
     [SerializeField] private Vector2 _inputVector;

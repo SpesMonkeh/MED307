@@ -285,14 +285,14 @@ RectTransform:
   m_GameObject: {fileID: 380952304}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: -0.079}
-  m_LocalScale: {x: 0.047548413, y: 0.5060665, z: 2}
+  m_LocalScale: {x: 0.04647572, y: 0.1835069, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1628147190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.9, y: 0.76}
+  m_AnchoredPosition: {x: 0.08, y: 0.76}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380952308
@@ -310,7 +310,7 @@ MonoBehaviour:
   _compendiumEntry: {fileID: 11400000, guid: ef172cad245cfe84a8170351e0906fa6, type: 2}
   _currentPuzzleString: ____ ___
   _tmPro: {fileID: 380952305}
-  _winText: {fileID: 0}
+  _winText: {fileID: 1557981663}
 --- !u!1 &416999139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,14 +1950,14 @@ RectTransform:
   m_GameObject: {fileID: 2052385824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 622193052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 528.9, y: 449}
+  m_AnchoredPosition: {x: 1100, y: 420}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052385826
