@@ -70,6 +70,8 @@ namespace Gameplay
                 
                 _winText.gameObject.SetActive(true);
                 _videoOutput.gameObject.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
             
            

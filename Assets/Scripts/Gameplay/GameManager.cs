@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using P307.Runtime.Inputs;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,10 +40,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (SceneManager.GetActiveScene().name == "GameScene")
         {
-            GameObject.FindGameObjectWithTag("Panel").SetActive(false);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                GameObject.FindGameObjectWithTag("Panel").SetActive(false);
+            }
         }
+        
+       
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
