@@ -68,7 +68,6 @@ public class PuzzleBehavior : MonoBehaviour
     }
     
     
-    
     private void UpdateText(char obj)
     {
         if (currentIndex < _compendiumEntry.EntryName.Length)
@@ -78,22 +77,24 @@ public class PuzzleBehavior : MonoBehaviour
                 currentIndex++;
             }
 
-            if (_compendiumEntry.EntryName[currentIndex] != obj)return;
-            
-            
-            if (_compendiumEntry.EntryName[currentIndex] == obj)
+            var currentChar = _compendiumEntry.EntryName[currentIndex];
+
+           
+            if (char.ToLower(currentChar) != char.ToLower(obj))
             {
-                var charArray = _tmPro.text.ToCharArray();
-                charArray[currentIndex] = obj;
-                _tmPro.text = new string(charArray);
+                return;
             }
+
+            var charArray = _tmPro.text.ToCharArray();
+
             
-            
-            
+            charArray[currentIndex] = char.IsUpper(currentChar) ? char.ToUpper(obj) : char.ToLower(obj);
+
+            _tmPro.text = new string(charArray);
+
             currentIndex++;
         }
     }
-
     
 }
 
