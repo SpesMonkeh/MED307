@@ -219,10 +219,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1850002387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 500}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246576733
 MonoBehaviour:
@@ -578,6 +578,7 @@ GameObject:
   - component: {fileID: 609328297}
   - component: {fileID: 609328296}
   - component: {fileID: 609328295}
+  - component: {fileID: 609328299}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -711,6 +712,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609328293}
   m_CullTransparentMesh: 1
+--- !u!95 &609328299
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609328293}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 985b905c93ce7594e97b90c83e1f0a0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &683348340
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,10 +848,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1850002387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1207606268
 MonoBehaviour:
@@ -879,6 +902,7 @@ GameObject:
   - component: {fileID: 1430933141}
   - component: {fileID: 1430933143}
   - component: {fileID: 1430933142}
+  - component: {fileID: 1430933144}
   m_Layer: 5
   m_Name: Indstillinger
   m_TagString: Untagged
@@ -943,6 +967,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430933140}
   m_CullTransparentMesh: 1
+--- !u!95 &1430933144
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430933140}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fab8c5254ca87844fb82ce44d9cecbda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1464036042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1259,7 @@ GameObject:
   - component: {fileID: 1595096734}
   - component: {fileID: 1595096732}
   - component: {fileID: 1595096735}
+  - component: {fileID: 1595096736}
   m_Layer: 5
   m_Name: MuteButton1
   m_TagString: Untagged
@@ -1359,6 +1406,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toggleMusic: 1
+--- !u!95 &1595096736
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595096730}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 058fde95061fd2c439fe7c5b5eef8b5f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1599535637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,6 +1570,7 @@ GameObject:
   - component: {fileID: 1620003813}
   - component: {fileID: 1620003814}
   - component: {fileID: 1620003817}
+  - component: {fileID: 1620003818}
   m_Layer: 5
   m_Name: MuteButton2
   m_TagString: Untagged
@@ -1647,6 +1717,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toggleMusic: 1
+--- !u!95 &1620003818
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620003812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d57afee5d3da2c448aecb60be2aec50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1751690383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1934,7 @@ GameObject:
   - component: {fileID: 2118042395}
   - component: {fileID: 2118042396}
   - component: {fileID: 2118042397}
+  - component: {fileID: 2118042398}
   m_Layer: 5
   m_Name: SliderVolume
   m_TagString: Untagged
@@ -1935,6 +2028,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2118042396}
+--- !u!95 &2118042398
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118042394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54e499f51d27e8c4baaae2ec5eac7c5a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2138752102
 GameObject:
   m_ObjectHideFlags: 0
