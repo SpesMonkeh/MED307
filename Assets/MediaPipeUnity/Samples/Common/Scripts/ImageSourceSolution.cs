@@ -17,6 +17,8 @@ namespace Mediapipe.Unity
 
     private Coroutine _coroutine;
 
+    WaitForEndOfFrame waitForEndOfFrame;
+    
     public RunningMode runningMode;
 
     public long timeoutMillisec
@@ -31,6 +33,8 @@ namespace Mediapipe.Unity
       {
         Stop();
       }
+
+      this.waitForEndOfFrame = new WaitForEndOfFrame();
       base.Play();
       _coroutine = StartCoroutine(Run());
     }
@@ -83,25 +87,23 @@ namespace Mediapipe.Unity
       OnStartRun();
       graphRunner.StartRun(imageSource);
 
-      var waitWhilePausing = new WaitWhile(() => isPaused);
+      var waitWhilePausing = new WaitWhile(() => this.isPaused);
 
       while (true)
       {
-        if (isPaused)
-        {
+        if (isPaused) 
           yield return waitWhilePausing;
-        }
 
         if (!textureFramePool.TryGetTextureFrame(out var textureFrame))
         {
-          yield return new WaitForEndOfFrame();
+          yield return this.waitForEndOfFrame;
           continue;
         }
 
         // Copy current image to TextureFrame
         ReadFromImageSource(imageSource, textureFrame);
         AddTextureFrameToInputStream(textureFrame);
-        yield return new WaitForEndOfFrame();
+        yield return this.waitForEndOfFrame;
 
         if (runningMode.IsSynchronous())
         {

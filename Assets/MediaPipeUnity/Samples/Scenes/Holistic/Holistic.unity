@@ -505,13 +505,13 @@ MonoBehaviour:
   _defaultAvailableResolutions:
   - width: 512
     height: 512
-    frameRate: 0
+    refreshRate: 0
   - width: 640
     height: 480
-    frameRate: 0
+    refreshRate: 0
   - width: 1280
     height: 720
-    frameRate: 0
+    refreshRate: 0
 --- !u!114 &275874973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,34 +528,34 @@ MonoBehaviour:
   _defaultAvailableResolutions:
   - width: 176
     height: 144
-    frameRate: 30
+    refreshRate: 30
   - width: 320
     height: 240
-    frameRate: 30
+    refreshRate: 30
   - width: 424
     height: 240
-    frameRate: 30
+    refreshRate: 30
   - width: 640
     height: 360
-    frameRate: 30
+    refreshRate: 30
   - width: 640
     height: 480
-    frameRate: 30
+    refreshRate: 30
   - width: 848
     height: 480
-    frameRate: 30
+    refreshRate: 30
   - width: 960
     height: 540
-    frameRate: 30
+    refreshRate: 30
   - width: 1280
     height: 720
-    frameRate: 30
+    refreshRate: 30
   - width: 1600
     height: 896
-    frameRate: 30
+    refreshRate: 30
   - width: 1920
     height: 1080
-    frameRate: 30
+    refreshRate: 30
 --- !u!114 &275874974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,7 +1443,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9aa4253bd1e2831449f104d47b98d79f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

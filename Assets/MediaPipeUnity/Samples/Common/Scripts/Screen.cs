@@ -12,13 +12,19 @@ namespace Mediapipe.Unity
   public class Screen : MonoBehaviour
   {
     [SerializeField] private RawImage _screen;
-
+    [SerializeField] Texture2D texture2D;
+    
+    
     private ImageSource _imageSource;
 
     public Texture texture
     {
       private get => _screen.texture;
-      set => _screen.texture = value;
+      set
+      {
+        _screen.texture = value;
+        this.texture2D = (this._screen.texture as Texture2D);
+      }
     }
 
     public UnityEngine.Rect uvRect
