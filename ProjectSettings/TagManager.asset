@@ -3,7 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Panel
+  - A
+  - B
+  - D
+  - E
+  - G
+  - H
+  - J
+  - N
+  - O
+  - R
+  - T
+  - V
+  - "\xC5"
+  - "\xD8"
+  - Card
+  - Compendium
   layers:
   - Default
   - TransparentFX
