@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/User Interface/Ordbog/Ordbog.unity
     guid: 319bda0a46747d248961f40bdaadc875
   - enabled: 1
+    path: Assets/User Interface/GameInstructions/GameInstructions.unity
+    guid: a53f63034d5da7b40a792153898995ac
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 2579a55768f3e264f9eae9183418decb
   - enabled: 1
