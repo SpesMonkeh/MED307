@@ -100,9 +100,9 @@ namespace Mediapipe.Unity
       }
     }
 
-    protected override FaceLandmarkListWithIrisAnnotation InstantiateChild(bool isActive = true)
+    protected override FaceLandmarkListWithIrisAnnotation InstantiateChild(bool activated = true)
     {
-      var annotation = base.InstantiateChild(isActive);
+      var annotation = base.InstantiateChild(activated);
       annotation.SetFaceLandmarkRadius(_faceLandmarkRadius);
       annotation.SetIrisLandmarkRadius(_irisLandmarkRadius);
       annotation.SetFaceLandmarkColor(_faceLandmarkColor);

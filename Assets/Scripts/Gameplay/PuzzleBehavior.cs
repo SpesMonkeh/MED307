@@ -68,30 +68,18 @@ public class PuzzleBehavior : MonoBehaviour
     }
     
     
-    private void UpdateText(char obj)
+    void UpdateText(char obj)
     {
         if (currentIndex < _compendiumEntry.EntryName.Length)
         {
-            if (char.IsWhiteSpace(_compendiumEntry.EntryName[currentIndex]))
-            {
+            if (char.IsWhiteSpace(_compendiumEntry.EntryName[currentIndex])) 
                 currentIndex++;
-            }
-
             var currentChar = _compendiumEntry.EntryName[currentIndex];
-
-           
             if (char.ToLower(currentChar) != char.ToLower(obj))
-            {
                 return;
-            }
-
             var charArray = _tmPro.text.ToCharArray();
-
-            
             charArray[currentIndex] = char.IsUpper(currentChar) ? char.ToUpper(obj) : char.ToLower(obj);
-
             _tmPro.text = new string(charArray);
-
             currentIndex++;
         }
     }

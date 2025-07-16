@@ -89,9 +89,9 @@ namespace Mediapipe.Unity
       }
     }
 
-    protected override HandLandmarkListAnnotation InstantiateChild(bool isActive = true)
+    protected override HandLandmarkListAnnotation InstantiateChild(bool activated = true)
     {
-      var annotation = base.InstantiateChild(isActive);
+      var annotation = base.InstantiateChild(activated);
       annotation.SetLeftLandmarkColor(_leftLandmarkColor);
       annotation.SetRightLandmarkColor(_rightLandmarkColor);
       annotation.SetLandmarkRadius(_landmarkRadius);

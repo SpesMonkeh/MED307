@@ -77,10 +77,10 @@ namespace Mediapipe.Unity
       _children = null;
     }
 
-    protected virtual T InstantiateChild(bool isActive = true)
+    protected virtual T InstantiateChild(bool activated = true)
     {
       var annotation = InstantiateChild<T>(_annotationPrefab);
-      annotation.SetActive(isActive);
+      annotation.SetActive(activated);
       return annotation;
     }
 

@@ -13,9 +13,8 @@ namespace Mediapipe.Unity
   {
     [SerializeField] private RawImage _screen;
     [SerializeField] Texture2D texture2D;
-    
-    
-    private ImageSource _imageSource;
+
+    ImageSource _imageSource;
 
     public Texture texture
     {
@@ -23,7 +22,6 @@ namespace Mediapipe.Unity
       set
       {
         _screen.texture = value;
-        this.texture2D = (this._screen.texture as Texture2D);
       }
     }
 
@@ -35,7 +33,6 @@ namespace Mediapipe.Unity
     public void Initialize(ImageSource imageSource)
     {
       _imageSource = imageSource;
-
       Resize(_imageSource.textureWidth, _imageSource.textureHeight);
       Rotate(_imageSource.rotation.Reverse());
       ResetUvRect(RunningMode.Async);
@@ -54,7 +51,7 @@ namespace Mediapipe.Unity
 
     public void ReadSync(TextureFrame textureFrame)
     {
-      if (!(texture is Texture2D))
+      if (texture is not Texture2D)
       {
         texture = new Texture2D(_imageSource.textureWidth, _imageSource.textureHeight, TextureFormat.RGBA32, false);
         ResetUvRect(RunningMode.Sync);

@@ -63,9 +63,9 @@ namespace Mediapipe.Unity
       Draw(target?.Detection, threshold);
     }
 
-    protected override DetectionAnnotation InstantiateChild(bool isActive = true)
+    protected override DetectionAnnotation InstantiateChild(bool activated = true)
     {
-      var annotation = base.InstantiateChild(isActive);
+      var annotation = base.InstantiateChild(activated);
       annotation.SetLineWidth(_lineWidth);
       annotation.SetKeypointRadius(_keypointRadius);
       return annotation;

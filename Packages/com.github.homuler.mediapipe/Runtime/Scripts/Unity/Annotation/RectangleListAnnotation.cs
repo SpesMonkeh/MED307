@@ -63,9 +63,9 @@ namespace Mediapipe.Unity
       }
     }
 
-    protected override RectangleAnnotation InstantiateChild(bool isActive = true)
+    protected override RectangleAnnotation InstantiateChild(bool activated = true)
     {
-      var annotation = base.InstantiateChild(isActive);
+      var annotation = base.InstantiateChild(activated);
       annotation.SetLineWidth(_lineWidth);
       annotation.SetColor(_color);
       return annotation;

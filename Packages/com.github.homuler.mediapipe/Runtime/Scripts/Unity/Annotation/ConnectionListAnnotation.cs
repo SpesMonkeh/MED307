@@ -63,9 +63,9 @@ namespace Mediapipe.Unity
       }
     }
 
-    protected override ConnectionAnnotation InstantiateChild(bool isActive = true)
+    protected override ConnectionAnnotation InstantiateChild(bool activated = true)
     {
-      var annotation = base.InstantiateChild(isActive);
+      var annotation = base.InstantiateChild(activated);
       annotation.SetColor(_color);
       annotation.SetLineWidth(_lineWidth);
       return annotation;
